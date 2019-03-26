@@ -1,0 +1,3092 @@
+===========================Requirement 1==========================
+
+
+
+
+
+
+
+public class Item
+
+
+
+{
+
+
+
+ private Long id;
+
+
+
+ private String name,itemCode;
+
+
+
+ private Double cost;
+
+
+
+ public Long getId() {
+
+
+
+   return id;
+
+
+
+ }
+
+
+
+ public void setId(Long id) {
+
+
+
+   this.id = id;
+
+
+
+ }
+
+
+
+ public String getName() {
+
+
+
+   return name;
+
+
+
+ }
+
+
+
+ public void setName(String name) {
+
+
+
+   this.name = name;
+
+
+
+ }
+
+
+
+ public String getItemCode() {
+
+
+
+   return itemCode;
+
+
+
+ }
+
+
+
+ public void setItemCode(String itemCode) {
+
+
+
+   this.itemCode = itemCode;
+
+
+
+ }
+
+
+
+ public Double getCost() {
+
+
+
+   return cost;
+
+
+
+ }
+
+
+
+ public void setCost(Double cost) {
+
+
+
+   this.cost = cost;
+
+
+
+ }
+
+
+
+ public Item(Long id, String name, String itemCode, Double cost) {
+
+
+
+   super();
+
+
+
+   this.id = id;
+
+
+
+   this.name = name;
+
+
+
+   this.itemCode = itemCode;
+
+
+
+   this.cost = cost;
+
+
+
+ }
+
+
+
+ public Item() {
+
+
+
+   super();
+
+
+
+ }
+
+
+
+ @Override
+
+
+
+ public String toString() {
+
+
+
+   return String.format("%-5s %-15s %-15s %s", id,name,itemCode,cost);
+
+
+
+ }
+
+
+
+ @Override
+
+
+
+ public int hashCode() {
+
+
+
+   final int prime = 31;
+
+
+
+   int result = 1;
+
+
+
+   result = prime * result
+
+
+
+       + ((itemCode == null) ? 0 : itemCode.hashCode());
+
+
+
+   result = prime * result + ((name == null) ? 0 : name.hashCode());
+
+
+
+   return result;
+
+
+
+ }
+
+
+
+ @Override
+
+
+
+ public boolean equals(Object obj) {
+
+
+
+   if (this == obj)
+
+
+
+     return true;
+
+
+
+   if (obj == null)
+
+
+
+     return false;
+
+
+
+   if (getClass() != obj.getClass())
+
+
+
+     return false;
+
+
+
+   Item other = (Item) obj;
+
+
+
+   if (itemCode == null) {
+
+
+
+     if (other.itemCode != null)
+
+
+
+       return false;
+
+
+
+   } else if (!itemCode.equalsIgnoreCase(other.itemCode))
+
+
+
+     return false;
+
+
+
+   if (name == null) {
+
+
+
+     if (other.name != null)
+
+
+
+       return false;
+
+
+
+   } else if (!name.equalsIgnoreCase(other.name))
+
+
+
+     return false;
+
+
+
+   return true;
+
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.io.BufferedReader;
+
+
+
+import java.io.IOException;
+
+
+
+import java.io.InputStreamReader;
+
+
+
+import java.text.ParseException;
+
+
+
+public class Main {
+
+
+
+        public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
+
+
+
+                BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
+
+
+
+                Item[] items = new Item[2];
+
+
+
+                for(int i=0;i<2;i++) {
+
+
+
+                        System.out.println("Enter item "+(i+1)+" detail:");
+
+
+
+                        String details = buff.readLine();
+
+
+
+                        String [] itemVal = details.split(",");
+
+
+
+                        items[i] = new Item(Long.parseLong(itemVal[0]),itemVal[1],itemVal[2],Double.parseDouble(itemVal[3]));
+
+
+
+                }
+
+
+
+                /*for(int i=0;i<2;i++) {
+
+
+
+                        if(){
+
+
+
+
+
+
+
+                        }
+
+
+
+                }*/
+
+
+
+                for(int i=0;i<2;i++) {
+
+
+
+                        System.out.println("\nItem "+(i+1)+":");
+
+
+
+                System.out.format("%-5s %-15s %-15s %s\n", "ID","Name","Item Code","Cost");
+
+
+
+                System.out.println(items[i]);
+
+
+
+                }
+
+
+
+    if(items[0].equals(items[1]))
+
+
+
+    {
+
+
+
+       System.out.println("\nItem 1 is same as Item 2");
+
+
+
+
+
+
+
+    }
+
+
+
+    else
+
+
+
+    {
+
+
+
+       System.out.println("\nItem 1 and Item 2 are different");
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+        }
+
+
+
+}
+
+
+
+=======================================
+
+
+
+
+
+
+
+==========================Requirement 2============================
+
+
+
+
+
+
+
+
+
+
+
+import java.io.BufferedReader;
+
+
+
+import java.io.InputStreamReader;
+
+
+
+import java.text.SimpleDateFormat;
+
+
+
+import java.util.Calendar;
+
+
+
+import java.util.Date;
+
+
+
+import java.util.regex.Pattern;
+
+
+
+public class Main {
+
+
+
+
+
+
+
+ public static void main(String[] args) throws Exception {
+
+
+
+  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+
+
+  String couponCode;
+
+
+
+  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
+
+  System.out.println("Enter the coupon code:");
+
+
+
+  couponCode = br.readLine();
+
+
+
+  System.out.println("1.Validate coupon code\n2.Check validity of coupon code\nEnter the choice:");
+
+
+
+  int ch=Integer.parseInt(br.readLine());
+
+
+
+  if(ch==1)
+
+
+
+  {
+
+
+
+   if(validateCouponCode(couponCode))
+
+
+
+   System.out.println("Coupon code validated");
+
+
+
+   else
+
+
+
+   System.out.println("Coupon code is invalid");
+
+
+
+  }
+
+
+
+  if(ch==2)
+
+
+
+  {
+
+
+
+   System.out.println("Enter the bought date:");
+
+
+
+   Date boughtDate=sdf.parse(br.readLine());
+
+
+
+   if(checkValidityOfCouponCode(couponCode,boughtDate))
+
+
+
+   System.out.println("Coupon code is valid");
+
+
+
+   else
+
+
+
+   System.out.println("The validity of coupon code is over");
+
+
+
+  }
+
+
+
+  //fill the code
+
+
+
+ }
+
+
+
+
+
+
+
+ public static boolean validateCouponCode(String couponCode) {
+
+
+
+  if(Pattern.matches("[A-Za-z][A-Za-z0-9][0-9]{2}[A-Za-z0-9]{5}[A-Za-z]", couponCode))
+
+
+
+  {
+
+
+
+  return true;
+
+
+
+  }
+
+
+
+  return false;
+
+
+
+  //fill the code
+
+
+
+ }
+
+
+
+
+
+
+
+ public static boolean checkValidityOfCouponCode(String couponCode, Date boughtDate) throws Exception {
+
+
+
+  //fill the code
+
+
+
+  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+
+
+  Date curr=sdf.parse("01-01-2018");
+
+
+
+  int days=Integer.parseInt(couponCode.substring(2,4));
+
+
+
+  long diff=curr.getTime()-boughtDate.getTime();
+
+
+
+  long days1=diff/(1000*60*60*24);
+
+
+
+  if(days1>days)
+
+
+
+  return false;
+
+
+
+  return true;
+
+
+
+ }
+
+
+
+
+
+
+
+}
+
+
+
+ ==============================================================
+
+
+
+======================================Requirement 3==============================
+
+
+
+
+
+
+
+
+
+
+
+import java.io.*;
+
+
+
+import java.util.*;
+
+
+
+
+
+
+
+public class Main {
+
+
+
+
+
+
+
+ public static void main(String[] args) throws Exception {
+
+
+
+  List<Item> itemList = new ArrayList<>();
+
+
+
+  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
+
+  System.out.println("1. Add items\n2. Search item by name\n3. Get item between price range\n4. Exit\nEnter your choice:");
+
+
+
+  Integer choice = Integer.parseInt(br.readLine());
+
+
+
+  do {
+
+
+
+  switch (choice) {
+
+
+
+   case 1:
+
+
+
+    System.out.println("Enter the number of items:");
+
+
+
+    Integer noOfItems = Integer.parseInt(br.readLine());
+
+
+
+    for (int i = 0; i < noOfItems; i++) {
+
+
+
+     Item item = Item.createItem(br.readLine());
+
+
+
+     itemList.add(item);
+
+
+
+    }
+
+
+
+    break;
+
+
+
+   case 2:
+
+
+
+    //fill the code
+
+
+
+    System.out.println("Enter the name:");
+
+
+
+    String itemName=br.readLine();
+
+
+
+    Item i=Item.searchItemByName(itemName, itemList);//new Item().??
+
+
+
+    if(i==null)
+
+
+
+    {
+
+
+
+    System.out.println("Item "+itemName+" not found");
+
+
+
+    }
+
+
+
+    else
+
+
+
+    {
+
+
+
+    System.out.println(i);
+
+
+
+    }
+
+
+
+    break;
+
+
+
+   case 3:
+
+
+
+    //fill the code
+
+
+
+    List<Item> al=new ArrayList<Item>();
+
+
+
+    System.out.println("Enter the min and max cost:");
+
+
+
+    Double minRate=Double.parseDouble(br.readLine());
+
+
+
+    Double maxRate=Double.parseDouble(br.readLine());
+
+
+
+    al=Item.findAllItemByPriceRange(itemList, minRate, maxRate);
+
+
+
+    //if(al==null)
+
+
+
+    //System.out.println();
+
+
+
+    System.out.format("%-10s %-10s %s\n", "Name", "Code", "Cost");
+
+
+
+    for(Item l:al)
+
+
+
+    {
+
+
+
+    System.out.format("%-10s %-10s %s\n",l.getName(),l.getItemCode(),l.getCost());
+
+
+
+    }
+
+
+
+    break;
+
+
+
+   case 4:
+
+
+
+    //fill the code
+
+
+
+    return;
+
+
+
+  }
+
+
+
+
+
+
+
+  System.out.println("1. Add items\n2. Search item by name\n3. Get item between price range\n4. Exit\nEnter your choice:");
+
+
+
+  choice = Integer.parseInt(br.readLine());
+
+
+
+  }while(choice!=4);
+
+
+
+ }
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.ArrayList;
+
+
+
+import java.util.List;
+
+
+
+
+
+
+
+public class Item {
+
+
+
+Long id;
+
+
+
+String name;
+
+
+
+String itemCode;
+
+
+
+Double cost;
+
+
+
+ public Long getId() {
+
+
+
+return id;
+
+
+
+}
+
+
+
+
+
+
+
+public void setId(Long id) {
+
+
+
+this.id = id;
+
+
+
+}
+
+
+
+
+
+
+
+public String getName() {
+
+
+
+return name;
+
+
+
+}
+
+
+
+
+
+
+
+public void setName(String name) {
+
+
+
+this.name = name;
+
+
+
+}
+
+
+
+
+
+
+
+public String getItemCode() {
+
+
+
+return itemCode;
+
+
+
+}
+
+
+
+
+
+
+
+public void setItemCode(String itemCode) {
+
+
+
+this.itemCode = itemCode;
+
+
+
+}
+
+
+
+
+
+
+
+public Double getCost() {
+
+
+
+return cost;
+
+
+
+}
+
+
+
+
+
+
+
+public void setCost(Double cost) {
+
+
+
+this.cost = cost;
+
+
+
+}
+
+
+
+
+
+
+
+public Item() {
+
+
+
+super();
+
+
+
+}
+
+
+
+
+
+
+
+public Item(Long id, String name, String itemCode, Double cost) {
+
+
+
+super();
+
+
+
+this.id = id;
+
+
+
+this.name = name;
+
+
+
+this.itemCode = itemCode;
+
+
+
+this.cost = cost;
+
+
+
+}
+
+
+
+@Override
+
+
+
+public String toString() {
+
+
+
+// TODO Auto-generated method stub
+
+
+
+return "Item Detail\nItem name: "+this.getName()+"\nItem code: "+this.getItemCode()+"\nItem Cost: "+this.getCost();
+
+
+
+}
+
+
+
+//fill the code
+
+
+
+
+
+
+
+ public static Item createItem(String itemDetail) {
+
+
+
+  //fill the code
+
+
+
+  String s[]=itemDetail.split(",");
+
+
+
+  return new Item(new Long(s[0]),s[1],s[2],new Double(s[3]));
+
+
+
+ }
+
+
+
+
+
+
+
+ public static Item searchItemByName(String itemName, List<Item> itemList) {
+
+
+
+  //fill the code
+
+
+
+  //Item it=null;
+
+
+
+  for(Item i:itemList)
+
+
+
+  if(itemName.equals(i.getName()))
+
+
+
+   return i;
+
+
+
+   return null;
+
+
+
+
+
+
+
+ }
+
+
+
+
+
+
+
+ public static List<Item> findAllItemByPriceRange(List<Item> itemList, Double minRate, Double maxRate) {
+
+
+
+List<Item> al=new ArrayList<Item>();
+
+
+
+  for(Item i:itemList)
+
+
+
+{
+
+
+
+if((i.getCost()<=maxRate)&&(i.getCost()>=minRate))
+
+
+
+{
+
+
+
+al.add(i);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+  return al;
+
+
+
+  //fill the code
+
+
+
+ }
+
+
+
+
+
+
+
+}
+
+
+
+ =====================================================
+
+
+
+=========================Requirement 4==================
+
+
+
+
+
+
+
+ import java.io.*;
+
+
+
+import java.util.*;
+
+
+
+public class Main
+
+
+
+{
+
+
+
+ public static void main(String[] args) throws Exception
+
+
+
+ {
+
+
+
+  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
+
+  List<Item> itemList = new ArrayList<Item>();
+
+
+
+  System.out.println("Enter the number of items:");
+
+
+
+  Integer noOfItems = Integer.parseInt(br.readLine());
+
+
+
+  for(int i = 0 ; i < noOfItems ; i++)
+
+
+
+  {
+
+
+
+   String itemDetails = br.readLine();
+
+
+
+   String[] splited = itemDetails.split(",");
+
+
+
+   itemList.add(new Item(Long.parseLong(splited[0]), splited[1], Double.parseDouble(splited[2]), Integer.parseInt(splited[3])));
+
+
+
+  }
+
+
+
+  System.out.println("1.Store\n2.Online\nEnter the choice:");
+
+
+
+  int ch=Integer.parseInt(br.readLine());
+
+
+
+
+
+
+
+  if(ch==1)
+
+
+
+  {
+
+
+
+   Double total=Item.calculateTotalBill(itemList);
+
+
+
+   System.out.printf("Total amount:%.2f",total);
+
+
+
+  }
+
+
+
+  if(ch==2)
+
+
+
+  {
+
+
+
+   System.out.println("1.One day delivery\n2.Normal delivery");
+
+
+
+   System.out.println("Enter delivery type:");
+
+
+
+   Integer deliveryType=Integer.parseInt(br.readLine());
+
+
+
+
+
+
+
+   Double tot=Item.calculateTotalBill(itemList,deliveryType);
+
+
+
+   System.out.printf("Total amount:%.2f",tot);
+
+
+
+  }
+
+
+
+
+
+
+
+ }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ import java.util.List;
+
+
+
+public class Item
+
+
+
+{
+
+
+
+private Long id;
+
+
+
+private String name;
+
+
+
+private Double cost;
+
+
+
+private Integer quantity;
+
+
+
+public Item()
+
+
+
+{
+
+
+
+super();
+
+
+
+}
+
+
+
+ public Item(Long id, String name, Double cost, Integer quantity)
+
+
+
+ {
+
+
+
+super();
+
+
+
+this.id = id;
+
+
+
+this.name = name;
+
+
+
+this.cost = cost;
+
+
+
+this.quantity = quantity;
+
+
+
+}
+
+
+
+
+
+
+
+public Long getId() {
+
+
+
+return id;
+
+
+
+}
+
+
+
+
+
+
+
+public void setId(Long id) {
+
+
+
+this.id = id;
+
+
+
+}
+
+
+
+
+
+
+
+public String getName() {
+
+
+
+return name;
+
+
+
+}
+
+
+
+
+
+
+
+public void setName(String name) {
+
+
+
+this.name = name;
+
+
+
+}
+
+
+
+
+
+
+
+public Double getCost() {
+
+
+
+return cost;
+
+
+
+}
+
+
+
+
+
+
+
+public void setCost(Double cost) {
+
+
+
+this.cost = cost;
+
+
+
+}
+
+
+
+
+
+
+
+public Integer getQuantity() {
+
+
+
+return quantity;
+
+
+
+}
+
+
+
+
+
+
+
+public void setQuantity(Integer quantity) {
+
+
+
+this.quantity = quantity;
+
+
+
+}
+
+
+
+
+
+
+
+ public static Double calculateTotalBill(List<Item> itemList)
+
+
+
+ {
+
+
+
+ Double total=0.0;
+
+
+
+ for(Item it:itemList)
+
+
+
+ {
+
+
+
+ total=total+(it.getCost()*it.getQuantity());
+
+
+
+ }
+
+
+
+ return total;
+
+
+
+
+
+
+
+ }
+
+
+
+
+
+
+
+ public static Double calculateTotalBill(List<Item> itemList, Integer deliveryType)
+
+
+
+ {
+
+
+
+
+
+
+
+ Double res=0.0;
+
+
+
+ if(deliveryType==1)
+
+
+
+ {
+
+
+
+ Double tot=0.0;
+
+
+
+ for(Item ii:itemList)
+
+
+
+ {
+
+
+
+ tot=tot+(ii.getCost()*ii.getQuantity());
+
+
+
+ }
+
+
+
+ res=tot+(0.15*tot);
+
+
+
+ }
+
+
+
+ else if(deliveryType==2)
+
+
+
+ {
+
+
+
+ Double tot=0.0;
+
+
+
+ for(Item ii:itemList)
+
+
+
+ {
+
+
+
+ tot=tot+(ii.getCost()*ii.getQuantity());
+
+
+
+ }
+
+
+
+ res=tot+(0.08*tot);
+
+
+
+ }
+
+
+
+
+
+
+
+ return res;
+
+
+
+ }
+
+
+
+
+
+
+
+}
+
+
+
+ ================================================================
+
+
+
+===========================
+
+6
+
+
+
+purchase
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+import java.util.Date;
+
+
+
+import java.util.Map;
+
+
+
+public class Purchase {
+
+
+
+ private long id;
+
+
+
+ private Date purchaseDate;
+
+
+
+ private double totalAmount;
+
+
+
+ private String user;
+
+
+
+
+
+
+
+ public Purchase() {
+
+
+
+ // TODO Auto-generated constructor stub
+
+
+
+ }
+
+
+
+
+
+
+
+ public Purchase(long id, Date purchaseDate, double totalAmount, String user) {
+
+
+
+ super();
+
+
+
+ this.id = id;
+
+
+
+ this.purchaseDate = purchaseDate;
+
+
+
+ this.totalAmount = totalAmount;
+
+
+
+ this.user = user;
+
+
+
+ }
+
+
+
+
+
+
+
+ public long getId() {
+
+
+
+ return id;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setId(long id) {
+
+
+
+ this.id = id;
+
+
+
+ }
+
+
+
+
+
+
+
+ public Date getPurchaseDate() {
+
+
+
+ return purchaseDate;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setPurchaseDate(Date purchaseDate) {
+
+
+
+ this.purchaseDate = purchaseDate;
+
+
+
+ }
+
+
+
+
+
+
+
+ public double getTotalAmount() {
+
+
+
+ return totalAmount;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setTotalAmount(double totalAmount) {
+
+
+
+ this.totalAmount = totalAmount;
+
+
+
+ }
+
+
+
+
+
+
+
+ public String getUser() {
+
+
+
+ return user;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setUser(String user) {
+
+
+
+ this.user = user;
+
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ @Override
+
+
+
+ public String toString() {
+
+
+
+ return null;
+
+
+
+ }
+
+
+
+
+
+
+
+ public static void obtainPurchaseWithItem(Map<String, Integer> map,String purchaseDetail) {
+
+
+
+ for(Map.Entry<String, Integer> m: map.entrySet())
+
+
+
+ System.out.println(String.format("%-15s %s",m.getKey(),m.getValue()));
+
+
+
+ }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+Main
+
+
+
+
+
+
+
+
+
+
+
+import java.io.BufferedReader;
+
+
+
+import java.io.InputStreamReader;
+
+
+
+import java.util.Map;
+
+
+
+import java.util.TreeMap;
+
+
+
+public class Main {
+
+
+
+ public static void main(String[] args) throws Exception {
+
+
+
+  BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
+
+
+
+  Map<String, Integer> map = new TreeMap<String, Integer>();
+
+
+
+  System.out.println("Enter the number of purchase:");
+
+
+
+  Integer purchaseCount = Integer.parseInt(buff.readLine());
+
+
+
+  String purchaseDetail=null;
+
+
+
+  System.out.format("%-15s %s\n","Item name","Quantity");
+
+
+
+  for (int i = 0; i < purchaseCount; i++) {
+
+
+
+  purchaseDetail=buff.readLine();
+
+
+
+ String spl[]=purchaseDetail.split(",");
+
+
+
+ for (int j = 3; j < spl.length; j=j+3) {
+
+
+
+ String item=spl[j];
+
+
+
+ Integer val=map.get(item);
+
+
+
+ if(val==null){
+
+
+
+  map.put(item, Integer.parseInt(spl[j+2]));
+
+
+
+ }
+
+
+
+ else{
+
+
+
+  Integer q=map.get(item);
+
+
+
+  q=q+Integer.parseInt(spl[j+2]);
+
+
+
+  map.replace(item, q);
+
+
+
+ }
+
+
+
+ }
+
+
+
+ }
+
+
+
+
+
+
+
+  Purchase.obtainPurchaseWithItem(map, purchaseDetail);
+
+
+
+
+
+
+
+
+
+
+
+ }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+5
+
+
+
+
+
+
+
+Purchase
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.Date;
+
+
+
+
+
+
+
+public class Purchase implements Comparable<Purchase>{
+
+
+
+ private Long id;
+
+
+
+
+
+
+
+ private Date purchaseDate;
+
+
+
+
+
+
+
+ private Double totalAmount;
+
+
+
+
+
+
+
+ private String user;
+
+
+
+ public Purchase() {
+
+
+
+ // TODO Auto-generated constructor stub
+
+
+
+ }
+
+
+
+
+
+
+
+ public Purchase(Long id, Date purchaseDate, Double totalAmount, String user) {
+
+
+
+ super();
+
+
+
+ this.id = id;
+
+
+
+ this.purchaseDate = purchaseDate;
+
+
+
+ this.totalAmount = totalAmount;
+
+
+
+ this.user = user;
+
+
+
+ }
+
+
+
+
+
+
+
+ public Long getId() {
+
+
+
+ return id;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setId(Long id) {
+
+
+
+ this.id = id;
+
+
+
+ }
+
+
+
+
+
+
+
+ public Date getPurchaseDate() {
+
+
+
+ return purchaseDate;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setPurchaseDate(Date purchaseDate) {
+
+
+
+ this.purchaseDate = purchaseDate;
+
+
+
+ }
+
+
+
+
+
+
+
+ public Double getTotalAmount() {
+
+
+
+ return totalAmount;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setTotalAmount(Double totalAmount) {
+
+
+
+ this.totalAmount = totalAmount;
+
+
+
+ }
+
+
+
+
+
+
+
+ public String getUser() {
+
+
+
+ return user;
+
+
+
+ }
+
+
+
+
+
+
+
+ public void setUser(String user) {
+
+
+
+ this.user = user;
+
+
+
+ }
+
+
+
+
+
+
+
+ @Override
+
+
+
+ public String toString() {
+
+
+
+ return String.format("%-10s %-15s %s",id,user,totalAmount);
+
+
+
+
+
+
+
+ }
+
+
+
+
+
+
+
+ @Override
+
+
+
+ public int compareTo(Purchase o) {
+
+
+
+ if(o.getId()>this.getId()){
+
+
+
+ return 1;
+
+
+
+ }
+
+
+
+ else if(o.getId()<this.getId()){
+
+
+
+ return -1;
+
+
+
+ }
+
+
+
+ return 0;
+
+
+
+ }
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.io.BufferedReader;
+
+
+
+import java.io.IOException;
+
+
+
+import java.io.InputStreamReader;
+
+
+
+import java.text.ParseException;
+
+
+
+import java.text.SimpleDateFormat;
+
+
+
+import java.util.ArrayList;
+
+
+
+import java.util.Collections;
+
+
+
+import java.util.Date;
+
+
+
+import java.util.List;
+
+
+
+public class Main {
+
+
+
+ public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
+
+
+
+ BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
+
+
+
+ String currentLine;
+
+
+
+ List<Purchase> purchases = new ArrayList<Purchase>();
+
+
+
+ SimpleDateFormat sd=new SimpleDateFormat("dd-MM-yyyy");
+
+
+
+ System.out.println("Enter the number of purchase:");
+
+
+
+ Integer purchaseCount = Integer.parseInt(buff.readLine());
+
+
+
+ List<Purchase> lis=new ArrayList<>();
+
+
+
+ String[] ip=new String[purchaseCount];
+
+
+
+ System.out.println("Enter the purchase details:");
+
+
+
+ for(int i=0;i<purchaseCount;i++){
+
+
+
+
+
+
+
+ String d=buff.readLine();
+
+
+
+ String s[]=d.split(",");
+
+
+
+ Date date=sd.parse(s[1]);
+
+
+
+ double ta=0;
+
+
+
+ int cc=i+1;
+
+
+
+ try{
+
+
+
+ if(s.length>=18){
+
+
+
+ ta=0;
+
+
+
+ for(int j=4;j<s.length-1;j=j+3){
+
+
+
+  ta=ta+Double.parseDouble(s[j])*Double.parseDouble(s[j+1]);
+
+
+
+ }
+
+
+
+ Purchase p=new Purchase(Long.parseLong(s[0]),date, ta,s[2]);
+
+
+
+ lis.add(p);
+
+
+
+ System.out.println("Purchase "+ cc +" is added to the list");
+
+
+
+ }
+
+
+
+ else{
+
+
+
+ throw new InvalidWholeSaleException(cc);
+
+
+
+ }
+
+
+
+ }
+
+
+
+ catch(InvalidWholeSaleException e){
+
+
+
+ System.out.println(e);
+
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ }
+
+
+
+ Collections.sort(lis);
+
+
+
+ //fill the code
+
+
+
+ System.out.println("Whole sale purchases:");
+
+
+
+ System.out.format("%-10s %-15s %s\n","ID","User","Amount");
+
+
+
+ for(Purchase p:lis){
+
+
+
+ System.out.println(p);
+
+
+
+ }
+
+
+
+ }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+InvalidWholeSaleException
+
+
+
+
+
+
+
+
+
+
+
+public class InvalidWholeSaleException extends Exception{
+
+
+
+ private int cc;
+
+
+
+public InvalidWholeSaleException(int cc) {
+
+
+
+ super();
+
+
+
+ this.cc = cc;
+
+
+
+ //System.out.println("Purchase " +cc+ " is not a wholesale");
+
+
+
+ }
+
+
+
+public InvalidWholeSaleException() {
+
+
+
+
+
+
+
+}
+
+
+
+@Override
+
+
+
+public String toString() {
+
+
+
+ return "InvalidWholeSaleException: "+"Purchase " +cc+ " is not a whole sale";
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
