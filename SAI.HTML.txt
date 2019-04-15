@@ -1,0 +1,63 @@
+create database BillPayment;
+
+use BillPayment;
+
+
+select * from  vendor_register
+drop table vendor_register
+create table vendor_register(
+vendor_name varchar(100),
+registration_no varchar(100),
+vendor_type varchar(100),
+Address varchar(100),
+Country varchar(100),
+State varchar(100),
+Email varchar(100),
+ContactNo varchar(100),
+Website varchar(100),
+CertificateIssueDate varchar(100),
+CertificatevalidityDate varchar(100),
+employee_count int,
+customer_count int,
+YearofEstablishment varchar(50)
+
+)
+
+drop table customer_register
+
+
+
+create table customer_register(
+customer_name varchar(100),
+address varchar(100),
+contact_no varchar(100),
+country varchar(100),
+state varchar(100),
+mail_id varchar(100),
+document_detail_number varchar(100),
+registration_date varchar(100),
+type_of_vendor varchar(100),
+card_number int(50),
+balance double(10,2)
+);
+
+ select * from customer_register
+
+
+
+select * from admin;
+
+insert into admin values("Sai", "12345"); 
+
+create table admin(
+admin_name varchar(100),
+admin_password varchar(100)
+);
+
+select * from Customer
+
+
+create table Customer(
+UserName Varchar(100),
+password Varchar(100)
+);
